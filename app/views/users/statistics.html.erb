@@ -1,0 +1,40 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'statistics' %>
+<% end %>
+<div class="main main-content">
+    <div class="option-wrapper">
+        <div class="select-option">
+            <select id="period">
+                <option value="7">過去 1 週間分</option>
+                <option value="30">過去 1 ヶ月分</option>
+            </select>
+            <select id="content">
+                <option value="0">すべて</option>
+                <% if @lists %>
+                    <% @lists.each do |list| %>
+                        <option value="<%= list.list_id %>"><%= list.list_content %></option>
+                    <% end %>
+                <% end %>
+            </select>
+            <input type="submit" value="表示" id="submit">
+        </div>
+        <div class="total-wrapper">
+            <p id="totalTitle">トータル(すべて)</p>
+            <div class="item-wrapper">
+                <div class="item">
+                    <p class="item-title" id="aggregatePeriod"> 1 週間</p>
+                    <p id="aggregateTime">00時間00分</p>
+                </div>
+                <div class="item">
+                    <p class="item-title">全期間</p>
+                    <p id="aggregateTotalTime">00時間00分</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-graph">
+        <canvas id="myBarChart"></canvas>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    </div>
+    <%= javascript_include_tag "statistics.js" %>
+</div>       

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <html lang="ja">
+    <meta charset="UTF-8">
+    <title>WebStipWatch</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= include_gon %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <%= yield :css %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+        <%= link_to("top", "/") %>
+      </div>
+      <ul class="header-menus">
+          
+          <% if @current_user %>
+            <li>
+              <%= link_to(@current_user.name, "/users/show") %>
+            </li>
+          <% else %>
+          <li>
+            <%= link_to("ログイン", "/login") %>
+          </li>
+          <li>
+            <%= link_to("新規登録", "/users/new") %>
+          </li>
+          <% end %>    
+          <% if @current_user %>
+            <li>
+              <%= link_to("タイマー", "/users/timer") %>
+            </li>
+            <li>
+              <%= link_to("統計", "/users/statistics") %>
+            </li>
+            <li>
+              <%= link_to("ログアウト", "/logout", {method: "post"}) %>
+            </li>
+          <% end %>
+      </ul>
+    </header>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag "new" %>
+<% end %>
+<div class="main users-new">
+    <div class="container">
+        <div class="wrap">
+            <%= form_tag("/login") do %>
+            <h1>ログイン</h1>
+            <div class="error-form">
+                <h3><%= @error_message %></h3>
+            </div>         
+            <div>
+                <label>E-mail</label>
+                <input type="text" name="email" value="<%= @email %>">
+            </div>
+            
+            <div>
+                <label>Password</label>
+                <input type="password" name="password" value="<%= @password %>">
+            </div>
+            <div>
+                <input type="submit" value="ログイン">
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+

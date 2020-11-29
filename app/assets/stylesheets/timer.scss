@@ -1,0 +1,143 @@
+/* timer ================================　スタイルのデータは原本よりも最新 */
+
+body {
+    background-color: #eee;
+    min-width: 100%;
+}
+
+.main-content {
+    padding: 50px 150px 0 150px;
+    height: auto;
+    width: calc(100% - 300px);
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: row;
+}
+
+.main-graph {
+    width: 70%;
+}
+
+.main-timer {
+    width: 30%;
+}
+
+.asd {
+    display: none;
+}
+
+.container {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    margin: 20px;
+    background-color: white;
+    padding: 15px;
+}
+
+#timer {
+    background-color: #ddd;
+    height: 150px;
+    line-height: 150px;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.timer-wrapper {
+    text-align: center;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    width: 30%;
+    height: 65px;
+    line-height: 44px;
+    background-color: #ddd;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+}
+
+.inactive {
+    opacity: .5;
+}
+
+.selections div {
+    position: relative;
+    margin: 25px 0;
+    
+}
+
+.selections {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+}
+
+label {
+    position: absolute;
+    top: -12px;
+    font-size: 16px;
+    margin: 5px;
+    padding: 0 2px;
+    background-color: white;
+}
+
+.section1 {
+    width: 30%;
+}
+
+.section2 {
+    width: 70%;
+}
+
+#selectTime {
+    width: 100%;
+    height: 50px;
+}
+
+#selectList {
+    width: 100%;
+    height: 50px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.list-form {
+    background-color: #eee;
+    padding: 10px 3px 10px 3px;
+    font-family:'メイリオ', 'Meiryo', sans-serif;
+}
+
+
+p {
+    margin-bottom: 5px;
+}
+
+.list-form h4 {
+    width: 95%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+#listOption {
+    width: 75%;
+    margin-left: 10px;
+    height: 20px;
+}
+
+.none {
+    display: none;
+}
+
+input[type=submit] {
+    margin-left: 15px;
+    width: 50px;
+}

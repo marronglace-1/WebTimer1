@@ -1,0 +1,36 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag "destroy" %>
+<% end %>
+<div class="main user-show">
+    <div class="main-wrapper">
+        <div class="user-tabs">
+            <div class="user">
+                <h2 class="title user-title">ユーザー情報</h2>
+                <img src="<%= "/images/#{@user.image_name}" %>">
+                <h2 class="name"><%= @user.name %></h2>
+                <p><%= @user.email %></p>
+                <%= link_to("/users/users_destroy", {method: "post"}) do %>
+                    <input type="submit" value="退会する" class="destroy-btn">
+                <% end %>
+            </div>
+            <div class="user-content-data">
+                <h2 class="title list-edit-title">学習内容の削除</h2>
+                <% if @lists %>
+                    <% @lists.each do |list| %>
+                        <div class="subtitle">
+                            <label>content</label>
+                            <input type="text" name="<%= list.list_name %>" value="<%= list.list_content %>">
+                            <%= form_tag("/users/content_destroy") do %>
+                                <input type="submit" name="<%= list.list_name %>" value="削除" class="content-btn">
+                            <% end %>
+                        </div>
+                    <% end %>
+                    <div class="caution">
+                        <p>※削除を行うと、今まで費やした時間ごとリセットされますので、ご注意ください。<br>
+                        内容の変更を行う場合は編集画面から行ってください。</p>
+                    </div>
+                <% end %>
+            </div>    
+        </div>
+    </div>
+</div>

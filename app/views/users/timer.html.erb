@@ -1,0 +1,64 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'timer' %>
+<% end %>
+<div class="main main-content">
+    <aside class="main-timer">
+        <div class="container">
+        <div class="none">
+            <%= audio_tag 'decision48.mp3' %>
+        </div>      
+            <div class="timer-wrapper">
+                <div id="timer">00:00</div>
+                <div class="btn-wrapper">
+                    <div class="btn" id="reset"><span class="fas fa-undo-alt"></span></div>
+                    <div class="btn" id="start"><span class="fas fa-play"></span></div>
+                    <div class="btn" id="stop"><span class="fas fa-stop"></span></div>
+                </div>
+            </div>
+            <div class="settime-form">
+                <div class="option">
+                    <div class="selections">
+                        <div class="section1">
+                            <label>MINUTES</label>
+                            <select id="selectTime">
+                                <option value="0">分数</option>
+                                <option value="1">1分</option>
+                                <option value="15">15分</option>
+                                <option value="30">30分</option>
+                                <option value="45">45分</option>
+                                <option value="60">60分</option>
+                            </select>
+                        </div>  
+                        <div class="section2">
+                            <label>CONTENT</label>
+                            <select id="selectList">
+                                <option value="0">学習内容</option>
+                                <% if @lists %>
+                                    <% @lists.each do |list| %>
+                                        <option value="<%= list.list_id %>%"><%= list.list_content %></option>
+                                    <% end %>
+                                <% end %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="list-form">
+                        <h3>◆使用方法</h3>
+                        <p>1.下記フォームに学習内容(プログラミングなど)を記載し、保存を押すと上記のCONTENTに追加されます。</p>
+                        <p>2．CONTENTとMINUTESの両方を選択すると、グレーアウトしているボタンが押せるようになります。</p>
+                        <p>3．時間になるとアラームがなり、右側のグラフにデータが反映されます。</p>
+                        <p>※Contentは三つまで保存が可能です。</p>
+                        <p>※今までの学習時間や、過去の学習時間はヘッダーの統計からご覧ください。</p>                        
+                        <input id="listOption" name="listContent" type="text">
+                        <input id="submit" type="submit" value="保存">
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+    </aside>
+    <main class="main-graph" id="graph">
+        <canvas id="myBarChart"></canvas>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+        <%= javascript_include_tag "timer.js" %>   
+    </main>        
+</div>

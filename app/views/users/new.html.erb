@@ -1,0 +1,35 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag "new" %>
+<% end %>
+<div class="main users-new">
+    <div class="container">
+        <div class="wrap">
+            <%= form_tag("/users/create") do %>
+            <h1>新規登録</h1>
+            <div class="error-form">
+                <% @user.errors.full_messages.each do |message| %>
+                    <h3><%= message %></h3>
+                <% end %>
+            </div>
+            <div>
+                <label>User name</label>
+                <input type="text" name="name" value="<%= @user.name %>">
+            </div>
+          
+            <div>
+                <label>E-mail</label>
+                <input type="text" name="email" value="<%= @user.email %>">
+            </div>
+            
+            <div>
+                <label>Password</label>
+                <input type="password" name="password" value="<%= @user.password %>">
+            </div>
+            <div>
+                <input type="submit" value="登録">
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,55 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag "show" %>
+<% end %>
+<div class="main user-show">
+    <div class="main-wrapper">
+        <div class="user-tabs">
+            <div class="user">
+                <h2 class="title user-title">ユーザー情報</h2>
+                <img src="<%= "/images/#{@user.image_name}" %>">
+                <h2 class="name"><%= @user.name %></h2>
+                <p><%= @user.email %></p>
+                <%= link_to("/users/destroy") do %>
+                    <input type="submit" value="退会画面へ" class="destroy-btn">
+                <% end %>
+                <%= link_to("/users/destroy") do %>
+                    <input type="submit" value="学習内容削除画面へ" class="destroy-btn">
+                <% end %>
+            </div>
+            <div class="user-data">
+                <h2 class="title user-edit-title">ユーザー情報編集</h2>
+                <%= form_tag("/users/users_edit") do %>
+                    <div class="subtitle">
+                        <label>name</label>
+                        <input type="text" name="name" value="<%= @user.name %>" class="user-edit-form">
+                    </div>
+                    <div class="subtitle">
+                        <label>email</label>
+                        <input type="text" name="email" value="<%= @user.email %>" class="user-edit-form">
+                    </div>
+                    <div class="subtitle">
+                        <label>password</label>
+                        <input type="password" name="password" value="<%= @user.password %>" class="user-edit-form">
+                    </div>
+                    <div>
+                        <input type="submit" value="編集" class="user-edit-btn">
+                    </div>
+                <% end %>
+            </div>
+            <div class="user-content-data">
+                <h2 class="title list-edit-title">学習内容の編集</h2>
+                <% if @lists %>
+                    <%= form_tag("/users/content_edit") do %>
+                        <% @lists.each do |list| %>
+                            <div class="subtitle">
+                                <label>content</label>
+                                <input type="text" name="<%= list.list_name %>" value="<%= list.list_content %>">
+                            </div>
+                        <% end %>
+                    <input type="submit" value="編集" class="content-btn">
+                    <% end %>
+                <% end %>
+            </div>    
+        </div>
+    </div>
+</div>
